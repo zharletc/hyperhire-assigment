@@ -11,7 +11,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ image, name, position, yos, activities }) => {
   return (
-    <div className="flex flex-col items-center py-9 px-4 mdb:px-9 mdb:py-9 bg-white rounded-xl shadow w-full max-w-[300px] mdb:max-w-[360px]">
+    <div className="flex flex-col items-center py-9 px-4 mdb:px-9 mdb:py-9 bg-white rounded-xl shadow w-full max-w-[250px] mdb:max-w-[360px] ">
       <div className="flex mx-auto w-[54px] mdb:w-[100px] mb-4">
         <Avatar src={image} />
       </div>

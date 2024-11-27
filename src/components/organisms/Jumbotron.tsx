@@ -34,7 +34,7 @@ const Jumbotron: React.FC<JumbotronProps> = ({ className }) => {
                     개발자가 필요하신가요?
                 </Link>
             </div>
-            <div className="flex flex-wrap hidden mdb:block">
+            <div className=" flex-wrap hidden mdb:flex">
                 <div className="max-w-max pr-[24px] w-1/3">
                     <hr className="w-full h-[1px] bg-white mb-4 " />
                     <p className="text-white font-bold text-lg leading-0">
