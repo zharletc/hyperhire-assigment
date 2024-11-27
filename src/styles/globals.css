@@ -7,21 +7,28 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.home {
+  width: 100%;
+  /* min-height: 100svh; */
+  background: url("/bg_home2.webp") lightgray -0.899px -258.472px / 100.094% 172.312% no-repeat;
 }
