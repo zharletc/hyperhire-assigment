@@ -27,8 +27,117 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .swiper {
+    --swiper-navigation-size: 15px !important;
+    --swiper-navigation-color: black !important;
+  }
+}
+
 .home {
   width: 100%;
   /* min-height: 100svh; */
   background: url("/bg_home2.webp") lightgray -0.899px -258.472px / 100.094% 172.312% no-repeat;
+
+}
+
+/* Tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Position the tooltip above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  /* max-width: 200px;  */
+  word-wrap: break-word;
+  /* Break long words */
+}
+
+/* Tooltip arrow */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .tooltip {
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
+    bottom: 100%;
+  }
+
+  .tooltip::after {
+    left: 10%;
+    margin-left: 0;
+  }
+}
+
+/* Custom tooltip */
+.tooltip-custom {
+  visibility: hidden;
+  background-color: #3A3A3A;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Position the tooltip above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  /* max-width: 200px;  */
+  word-wrap: break-word;
+  /* Break long words */
+}
+
+/* Custom tooltip arrow */
+.tooltip-custom::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #3A3A3A transparent transparent transparent;
+}
+
+/* Show the custom tooltip text when you mouse over the tooltip container */
+.tooltip-container:hover .tooltip-custom {
+  visibility: visible;
+  opacity: 1;
 }

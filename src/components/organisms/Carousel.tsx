@@ -1,7 +1,5 @@
 "use client";
-// import { useState } from "react";
 import Card from "../molecules/Card";
-// import { ArrowLeft, ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/bundle';
@@ -11,80 +9,51 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { useState } from "react";
 
 interface CarouselProps {
     className?: string;
+    candidates: Candidate[];
 }
-const Carousel: React.FC<CarouselProps> = ({ className }) => {
+const Carousel: React.FC<CarouselProps> = ({ className, candidates }) => {
 
-    // const [currentIndex, setCurrentIndex] = useState(0);
-    const cards = [
-        {
-            image: '/dummy_1.jpg',
-            name: 'Abhishek Gupta',
-            position: '마케팅',
-            yos: '2y+',
-            activities: [
-                "마케팅 콘텐츠 제작",
-                "인스타그램 관리",
-                "트위터 관리",
-                "블로그 글 작성",
-            ]
-        },
-        {
-            image: '/dummy_1.jpg',
-            name: 'Jane Smith',
-            position: '마케팅',
-            yos: '2y+',
-            activities: [
-                "마케팅 콘텐츠 제작",
-                "인스타그램 관리",
-                "트위터 관리",
-                "블로그 글 작성",
-            ]
-        },
-        {
-            image: '/dummy_1.jpg',
-            name: 'Alice Johnson',
-            position: '마케팅',
-            yos: '2y+',
-            activities: [
-                "마케팅 콘텐츠 제작",
-                "인스타그램 관리",
-                "트위터 관리",
-                "블로그 글 작성",
-            ]
-        },
-    ];
-    // Fungsi untuk berpindah ke next atau previous card
-    // const goToNext = () => {
-    //     setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
-    // };
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    // const goToPrev = () => {
-    //     setCurrentIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
-    // };
-
-    // const visibleCards = [
-    //     cards[(currentIndex - 1 + cards.length) % cards.length],
-    //     cards[currentIndex],
-    //     cards[(currentIndex + 1) % cards.length]
-    // ];
+    const handleSlideChange = (e: any) => {
+        console.log(e.realIndex);
+        setCurrentIndex(e.realIndex);
+    }
 
     return (
         <div className={className}>
+            <div className="w-full flex justify-center">
+                <div className="relative bg-nephritis-05 px-4 py-2 max-w-max rounded-lg mb-6 opacity-0 animate-fadeIn500 absolute mdb:left-[5%]">
+                    <div className="flex gap-1 items-center">
+                        <img src="/icons/ic_dollar.svg" alt="logo" />
+                        <p className="font-bold text-trabuddy-alternative text-lg">
+                            {candidates[currentIndex].price}
+                        </p>
+                    </div>
+
+                    {/* Pseudo-element menggunakan Tailwind */}
+                    <div className="absolute bottom-[-10px] right-[50%]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                            <path d="M6.43301 10.25C6.24056 10.5833 5.75944 10.5833 5.56699 10.25L0.370835 1.25C0.178386 0.916665 0.418948 0.499999 0.803848 0.499999L11.1962 0.5C11.5811 0.5 11.8216 0.916667 11.6292 1.25L6.43301 10.25Z" fill="white" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
             <Swiper
+                onSlideChange={(e) => handleSlideChange(e)}
                 style={{
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
-                    // decrease the size of the pagination navigation
                     '--swiper-navigation-size': '32px',
                 } as React.CSSProperties}
                 effect="coverflow"
                 grabCursor={false}
                 centeredSlides={true}
-                // spaceBetween={50}
-                // slidesPerView={3}
                 coverflowEffect={{
                     rotate: 0,
                     stretch: 150,
@@ -92,18 +61,22 @@ const Carousel: React.FC<CarouselProps> = ({ className }) => {
                     modifier: 1,
                     slideShadows: false
                 }}
+                allowTouchMove={false}
                 navigation={true}
+                spaceBetween={50}
                 pagination={{ clickable: true }}
                 modules={[EffectCoverflow, Pagination, Navigation]}
+                initialSlide={1}
                 breakpoints={{
                     360: {
-                        slidesPerView: 3,
-                        coverflowEffect:{
-                            rotate: 50,
-                            stretch: 0,
-                            depth: 100,
+                        slidesPerView: 2,
+                        coverflowEffect: {
+                            rotate: 0,
+                            stretch: 120,
+                            depth: 200,
                             modifier: 1,
-                            slideShadows: true,
+                            slideShadows: false,
+
                         }
                     },
                     768: {
@@ -116,37 +89,14 @@ const Carousel: React.FC<CarouselProps> = ({ className }) => {
                         slidesPerView: 3
                     }
                 }}
-                loop={false}
-                onSlideChange={() => console.log('slide change')}
+                loop={true}
                 onSwiper={(swiper) => console.log(swiper)}
             >
-                {cards.map((card, index) => (
+                {candidates.map((card, index) => (
                     <SwiperSlide key={index}><Card {...card} /></SwiperSlide>
                 ))}
             </Swiper>
-            {/* <div className="relative w-full flex justify-center items-center">
-                <button
-                    onClick={goToPrev}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 text-white z-1">
-                    <ArrowLeft2 size={16} />
-                </button>
-                <div className="flex overflow-hidden z-0">
-                    {visibleCards.map((card, index) => (
-                        <div
-                            key={index}
-                            className={`transition-transform duration-500 ease-in-out w-[300px] ${index === 1 ? 'scale-100' : 'scale-[0.9]'} ${index === 0 ? 'opacity-75' : index === 2 ? 'opacity-75' : 'opacity-100'}`}
-                        >
-                            
-                        </div>
-                    ))}
-                </div>
-                <button
-                    onClick={goToNext}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 text-white">
-                    <ArrowRight2 size={16} />
-                </button>
-            </div> */}
-        </div>
+        </div >
 
     )
 }

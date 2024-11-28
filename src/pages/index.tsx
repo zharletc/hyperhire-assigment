@@ -1,33 +1,46 @@
-// import Image from "next/image";
-// import Card from "@/components/molecules/Card";
-// import Jumbotron from "@/components/organisms/Home/Jumbotron";
+import { GetServerSideProps, NextPage } from 'next';
 import FooterTemplate from "@/components/template/FooterTemplate";
 import HomeTemplate from "@/components/template/HomeTemplate";
 import MainTemplate from "@/components/template/MainTemplate";
-import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 const poppins = Poppins({ weight: "900", subsets: ["latin"] });
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
-export default function Home() {
+interface HomePageProps {
+  candidates: Candidate[];
+  services: Service[];
+};
+
+
+const Home: NextPage<HomePageProps> = ({ candidates, services }) => {
   return (
     <MainTemplate>
       <div
         className={`${poppins.className}`}
       >
-        <HomeTemplate />
+        <HomeTemplate candidates={candidates} services={services} />
         <FooterTemplate />
       </div>
     </MainTemplate>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
+  const fetchCandidates = fetch("http://localhost:3000/api/candidates");
+  const fetchServices = fetch("http://localhost:3000/api/services");
+
+  const [productsRes, categoriesRes] = await Promise.all([fetchCandidates, fetchServices]);
+
+  const candidates: Candidate[] = await productsRes.json();
+  const services: Service[] = await categoriesRes.json();
+
+  return {
+    props: {
+      candidates,
+      services,
+    },
+  };
+};
+
+
+export default Home;

@@ -1,18 +1,18 @@
 const FProfileInfo = () => {
     return (
         <div className="profile-info">
-            <div className="flex">
-                <div className="flex flex-col gap-2 mr-4">
+            <div className="flex mdb:flex-row flex-col mdb:gap-0">
+                <div className="flex flex-col gap-2 mdb:mb-0 mb-4 mdb:mr-4">
                     <p className="text-sm font-bold text-blue-gray-80">상호명</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">하이퍼하이어</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">Hyperhire India Private Limited</p>
                 </div>
-                <div className="flex flex-col gap-2 mr-[90px]">
+                <div className="flex flex-col gap-2 mb-[39px] mdb:mr-[90px]">
                     <p className="text-sm font-bold text-blue-gray-80">대표 CEO</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">김주현</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">Juhyun Kim</p>
                 </div>
-                <div className="flex flex-col gap-2 mr-[42px]">
+                <div className="flex flex-col gap-2 mb-[36px] mdb:mr-[42px]">
                     <p className="text-sm font-bold text-blue-gray-80">사업자등록번호 CIN</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">427-86-01187</p>
                     <p className="text-[13px] font-bold text-blue-gray-60">U74110DL2016PTC290812</p>

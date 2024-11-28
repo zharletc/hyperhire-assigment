@@ -6,16 +6,21 @@ interface JumbotronProps {
 const Jumbotron: React.FC<JumbotronProps> = ({ className }) => {
     return (
         <div className={className}>
-            <div className="relative bg-white px-3 py-2 max-w-max rounded-lg mb-6">
-                <p className="font-bold text-[#40E2E8] text-lg">풀타임, 파트타임</p>
+            <div className="relative bg-[#8BC4FF] mdb:bg-white px-3 py-2 max-w-max rounded-lg mb-6 opacity-0 animate-fadeInWithDelay">
+                <p className="font-bold text-white mdb:text-[#40E2E8] text-lg">풀타임, 파트타임</p>
                 {/* Pseudo-element menggunakan Tailwind */}
-                <div className="absolute bottom-[-10px]">
+                <div className="absolute bottom-[-10px] mdb:block hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
                         <path d="M6.43301 10.25C6.24056 10.5833 5.75944 10.5833 5.56699 10.25L0.370835 1.25C0.178386 0.916665 0.418948 0.499999 0.803848 0.499999L11.1962 0.5C11.5811 0.5 11.8216 0.916667 11.6292 1.25L6.43301 10.25Z" fill="white" />
                     </svg>
                 </div>
+                <div className="absolute bottom-[-10px] mdb:hidden block">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                        <path d="M6.43301 10.25C6.24056 10.5833 5.75944 10.5833 5.56699 10.25L0.370835 1.25C0.178386 0.916665 0.418948 0.499999 0.803848 0.499999L11.1962 0.5C11.5811 0.5 11.8216 0.916667 11.6292 1.25L6.43301 10.25Z" fill="#8BC4FF" />
+                    </svg>
+                </div>
             </div>
-            <div className="mb-6">
+            <div className="mb-6 animate-fadeInUp500">
                 <h1 className="text-white font-bold text-[36px] mdb:text-[48px] leading-0">
                     최고의 실력을 가진
                 </h1>
@@ -23,18 +28,18 @@ const Jumbotron: React.FC<JumbotronProps> = ({ className }) => {
                     외국인 인재를 찾고 계신가요?
                 </h1>
             </div>
-            <div className="mb-6">
+            <div className="mb-6 animate-fadeInUp500">
                 <p className="text-white text-[18px] mdb:text-[24px] leading-0 font-bold">
                     법률 및 인사관리 부담없이
                     1주일 이내에 원격으로 채용해보세요.
                 </p>
             </div>
-            <div className="mb-[60px] hidden mdb:block">
+            <div className="mb-[60px] hidden mdb:block animate-fadeInUp500">
                 <Link href="/register" className="text-white font-bold text-lg underline underline-offset-1">
                     개발자가 필요하신가요?
                 </Link>
             </div>
-            <div className=" flex-wrap hidden mdb:flex">
+            <div className=" flex-wrap hidden mdb:flex animate-fadeIn500">
                 <div className="max-w-max pr-[24px] w-1/3">
                     <hr className="w-full h-[1px] bg-white mb-4 " />
                     <p className="text-white font-bold text-lg leading-0">
