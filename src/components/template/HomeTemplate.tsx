@@ -19,8 +19,6 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({ candidates, services }) => 
                 <div className="max-w-[1920px] mdb:mx-auto px-5 animate-fadeIn500">
                     <JobList className="mdb:mt-[120px] mt-[20px] overflow-x-hidden" services={services} />
                 </div>
-
-
             </div>
         </div>
 
