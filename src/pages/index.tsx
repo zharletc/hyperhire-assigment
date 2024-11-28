@@ -26,8 +26,8 @@ const Home: NextPage<HomePageProps> = ({ candidates, services }) => {
 }
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const fetchCandidates = fetch("http://localhost:3000/api/candidates");
-  const fetchServices = fetch("http://localhost:3000/api/services");
+  const fetchCandidates = fetch(process.env.NEXT_PUBLIC_URL + "/api/candidates");
+  const fetchServices = fetch(process.env.NEXT_PUBLIC_URL + "/api/services");
 
   const [productsRes, categoriesRes] = await Promise.all([fetchCandidates, fetchServices]);
 
